@@ -1,128 +1,105 @@
-# IPL Exploratory Data Analysis (EDA) 🏏
-This project contains an in-depth Exploratory Data Analysis (EDA) of the Indian Premier League (IPL) data. The analysis is performed to uncover interesting trends, player statistics, and match-level insights from all seasons of the tournament.
+# 🏏 IPL Exploratory Data Analysis (EDA)
 
-🎯 Project Goal
-The primary goal of this project is to explore and visualize the IPL data to answer key questions, such as:
+This project presents a comprehensive **Exploratory Data Analysis (EDA)** of the Indian Premier League (IPL), uncovering trends, player stats, match insights, and team performances across all IPL seasons.
 
-Which team has scored the most number of 200+ scores?
+---
 
-Which team has the highest winning percentage?
+## 🎯 Project Goals
 
-Who has won the most MOM awards?
+The primary objectives of this project are to explore and visualize IPL data in order to answer key questions:
 
-Is there any lucky venue for a particular team?
+* Which team has scored the most 200+ totals?
+* Which team has the highest winning percentage?
+* Who has won the most "Player of the Match" (MOM) awards?
+* Is there a lucky venue for a particular team?
 
-📊 Data Sources
-The analysis is based on two datasets containing information from the IPL matches. These two datasets were merged on a common id column to create a single, comprehensive DataFrame for analysis.
+---
 
-Dataset Links
-Deliveries Dataset:
-https://drive.google.com/file/d/1O6E5DBDSFYSK4D9kandO-ELgFV23GVyi/view?usp=sharing
+## 📊 Data Sources
 
-Match Dataset:
-https://drive.google.com/file/d/1tfdKTH39s8bhpRbY_Sz5FYO6IRPoFoeG/view?usp=sharing
+The analysis uses **two datasets**, which were merged using the `id` column to form a unified DataFrame:
 
-Column Details
-Match Dataset (match_dataset.csv)
+* [Deliveries Dataset](https://drive.google.com/file/d/1O6E5DBDSFYSK4D9kandO-ELgFV23GVyi/view?usp=sharing)
+* [Match Dataset](https://drive.google.com/file/d/1tfdKTH39s8bhpRbY_Sz5FYO6IRPoFoeG/view?usp=sharing)
 
-This dataset provides a high-level view of each match, focusing on the overall outcome.
+---
 
-id: A unique ID for each match. This is the primary key used to link this dataset with the deliveries dataset.
+## 🧾 Dataset Details
 
-city: The location where the match was played.
+### 1. **Match Dataset (`match_dataset.csv`)**
 
-date: The date of the match.
+High-level match information:
 
-player_of_match: The name of the player who won the "Player of the Match" award.
+| Column               | Description                                 |
+| -------------------- | ------------------------------------------- |
+| `id`                 | Unique match ID (Primary Key)               |
+| `city`               | Match location                              |
+| `date`               | Date of the match                           |
+| `player_of_match`    | Player awarded "Man of the Match"           |
+| `venue`              | Stadium name                                |
+| `neutral_venue`      | Whether venue was neutral (0 = No, 1 = Yes) |
+| `team1`, `team2`     | Competing teams                             |
+| `toss_winner`        | Team that won the toss                      |
+| `toss_decision`      | Toss decision (bat/field)                   |
+| `winner`             | Match-winning team                          |
+| `result`             | Type of result (runs, wickets, tie)         |
+| `result_margin`      | Margin of victory                           |
+| `eliminator`         | Whether match was an eliminator (Y/N)       |
+| `method`             | If DLS method was applied                   |
+| `umpire1`, `umpire2` | Names of umpires                            |
 
-venue: The stadium where the match took place.
+---
 
-neutral_venue: A binary value (0 or 1) indicating if the venue was neutral.
+### 2. **Deliveries Dataset (`deliveries_dataset.csv`)**
 
-team1 & team2: The names of the two competing teams.
+Ball-by-ball data:
 
-toss_winner: The team that won the coin toss.
+| Column                                     | Description                         |
+| ------------------------------------------ | ----------------------------------- |
+| `id`                                       | Match ID (Foreign Key)              |
+| `inning`                                   | Inning number (1/2)                 |
+| `over`, `ball`                             | Over and ball number                |
+| `batsman`, `non_striker`                   | Players involved in batting         |
+| `bowler`                                   | Bowler name                         |
+| `batsman_runs`, `extra_runs`, `total_runs` | Runs scored                         |
+| `non_boundary`                             | Indicates non-boundary runs (0/1)   |
+| `is_wicket`                                | Wicket taken (0/1)                  |
+| `dismissal_kind`                           | Type of dismissal                   |
+| `player_dismissed`                         | Batsman dismissed                   |
+| `fielder`                                  | Fielder involved                    |
+| `extras_type`                              | Type of extra (e.g., wide, no-ball) |
+| `batting_team`, `bowling_team`             | Teams involved                      |
 
-toss_decision: The decision made by the toss-winning captain (bat or field).
+---
 
-winner: The team that won the match.
+## 🛠️ Tools & Technologies Used
 
-result: The type of victory, such as runs, wickets, or tie.
+* **Jupyter Notebook / Google Colab** – For interactive analysis
+* **Pandas** – Data manipulation and cleaning
+* **Matplotlib & Seaborn** – Data visualization
 
-result_margin: The margin of victory in terms of runs or wickets.
+---
 
-eliminator: A flag (Y or N) for matches that went into a super over.
+## 💡 Key Insights
 
-method: Indicates if the Duckworth-Lewis-Stern (DLS) method was applied.
+Here are some significant findings from the EDA:
 
-umpire1 & umpire2: The names of the two umpires for the match.
+* **Top Batsmen**: Identified top 10 run-scorers in IPL history.
+* **Top Bowlers**: Showcased leading wicket-takers and their statistics.
+* **Winning Teams**: Highlighted teams with the highest number of wins and best win percentages.
+* **Toss Influence**: Notable correlation between toss outcomes and match results.
+* **Venue Analysis**: Determined which stadiums are high-scoring or have been lucky for specific teams.
 
-Deliveries Dataset (deliveries_dataset.csv)
+---
 
-This dataset provides a granular, ball-by-ball breakdown for every match, perfect for in-depth analysis of player performance.
+## ▶️ How to Run This Project
 
-id: The unique match ID, acting as a foreign key to link to the match dataset.
+To explore this analysis on your local system or Google Colab:
 
-inning: The inning number (1 or 2).
+1. Clone or download the repository.
+2. Ensure required libraries are installed:
+   `pandas`, `matplotlib`, `seaborn`
+3. Open **`Assignment2Python.ipynb`** in Jupyter Notebook or Google Colab.
+4. Run the notebook cells sequentially to view the analysis and visualizations.
 
-over: The over number in the current inning.
-
-ball: The ball number within the current over.
-
-batsman: The name of the batsman on strike.
-
-non_striker: The name of the non-striker.
-
-bowler: The name of the bowler.
-
-batsman_runs: The number of runs scored by the batsman on that specific ball.
-
-extra_runs: Any additional runs from extras like wides or no-balls.
-
-total_runs: The total runs scored on that ball.
-
-non_boundary: A flag (0 or 1) indicating if the ball went for a boundary.
-
-is_wicket: A flag (0 or 1) indicating if a wicket was taken.
-
-dismissal_kind: The type of dismissal (e.g., caught, bowled).
-
-player_dismissed: The name of the batsman who was dismissed.
-
-fielder: The name of the fielder involved in the dismissal.
-
-extras_type: The type of extra given.
-
-batting_team**: The team currently batting.
-
-bowling_team**: The team currently bowling.
-
-🛠️ Tools & Technologies
-Jupyter Notebook: The analysis is performed in a Jupyter Notebook environment (specifically, Google Colab).
-
-Pandas: Used extensively for data loading, cleaning, and manipulation.
-
-
-💡 Key Findings
-The EDA process revealed several key insights into the IPL:
-
-Batting Dominance: The analysis identified the top 10 batsmen by total runs scored in IPL history.
-
-Bowling Prowess: It highlighted the leading wicket-takers and their key bowling metrics.
-
-Team Success: The project showcases which teams have been the most successful in terms of wins and win percentage over the years.
-
-Toss Impact: A clear correlation was found between winning the toss and the final match result, showing the strategic importance of the toss.
-
-Venue Performance: The analysis pinpoints which stadiums have hosted the most matches and which venues are high-scoring.
-
-▶️ How to Run the Notebook
-To run this analysis on your local machine or in Google Colab:
-
-Clone this repository to your local machine.
-
-Ensure you have the required libraries installed (pandas, matplotlib, seaborn).
-
-Open the Assignment2Python.ipynb file in a Jupyter Notebook environment.
-
-Run the cells sequentially to see the analysis and visualizations.
+---
